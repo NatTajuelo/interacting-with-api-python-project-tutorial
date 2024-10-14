@@ -12,11 +12,13 @@ client_id = os.environ.get("CLIENT_ID")
 client_secret = os.environ.get("CLIENT_SECRET")
 
 auth_manager = SpotifyClientCredentials(client_id = client_id, client_secret = client_secret)
-con = spotipy.Spotify(auth_manager=auth_manager)
+sp = spotipy.Spotify(auth_manager=auth_manager)
 
-id_artist = "64tJ2EAv1R6UaZqc4iOCyj"
+#artist = 'spotify:artist:64tJ2EAv1R6UaZqc4iOCyj'
 
-result = spotipy.artist_top_tracks("64tJ2EAv1R6UaZqc4iOCyj")
+artist = "64tJ2EAv1R6UaZqc4iOCyj"
+
+result = sp.artist_top_tracks("64tJ2EAv1R6UaZqc4iOCyj")
 if result: 
     tracks = result["tracks"] 
     tracks = [{k: (v/(1000*60))%60 if k == "duration_ms" else v 
