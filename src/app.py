@@ -7,7 +7,6 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import matplotlib.pyplot as plt
 
 
-# load the .env file variables
 load_dotenv()
 client_id = os.environ.get("CLIENT_ID")
 client_secret = os.environ.get("CLIENT_SECRET")
@@ -24,7 +23,7 @@ if result:
         {
             "name": track["name"],
             "popularity": track["popularity"],
-            "duration_ms": (track["duration_ms"] / (1000 * 60))  # Convert to minutes
+            "duration_ms": (track["duration_ms"] / (1000 * 60)) 
         }
         for track in tracks
     ]
@@ -39,10 +38,9 @@ cmap = sns.cubehelix_palette(rot=-.2, as_cmap=True)
 
 scatter_plot = sns.scatterplot(data = tracks_df, x = "popularity", y = "duration_ms")
 
-plt.xlabel('Popularity')
-plt.ylabel('Duration (minutes)')
-plt.title('Relation between Popularity and Duration of Top Tracks')
+plt.xlabel("Popularity")
+plt.ylabel("Duration (minutes)")
+plt.title("YOASOBI" "\nRelation between Popularity and Duration of Top Tracks")
 plt.savefig("YOASOBI_top_tracks.png")
 
-plt.title('Relation between the Popularity and the Duration')
 plt.show()
